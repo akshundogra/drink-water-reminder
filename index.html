@@ -39,13 +39,24 @@
     button:hover {
       background-color: #0097a7;
     }
+    .meme {
+      display: none;
+      margin-top: 20px;
+    }
+    .meme img {
+      max-width: 300px;
+      border-radius: 20px;
+    }
   </style>
 </head>
 <body>
   <div class="reminder">
     <div class="drop">💧</div>
-    <h1>Hey friend! Time to drink some water 💦</h1>
+    <h1>Hey Gorgeous! Time to drink some water 💦</h1>
     <button onclick="resetReminder()">I drank water!</button>
+    <div class="meme" id="meme">
+      <img src="https://media.tenor.com/Z4j5D6Ntv40AAAAC/happy-cat.gif" alt="Happy Cat Meme">
+    </div>
   </div>
 
   <script>
@@ -62,7 +73,7 @@
     function resetReminder() {
       clearInterval(reminderInterval);
       startReminder();
-      alert("Great job! Come back in 30 mins 💙");
+      document.getElementById("meme").style.display = "block";
     }
 
     startReminder();
