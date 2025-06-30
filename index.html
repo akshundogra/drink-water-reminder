@@ -53,9 +53,6 @@
 
     function notify() {
       document.title = "💧 DRINK WATER 💧";
-      if (Notification.permission === "granted") {
-        new Notification("💧 Time to hydrate!");
-      }
     }
 
     function startReminder() {
@@ -68,11 +65,7 @@
       alert("Great job! Come back in 30 mins 💙");
     }
 
-    if (Notification.permission !== "granted") {
-      Notification.requestPermission().then(startReminder);
-    } else {
-      startReminder();
-    }
+    startReminder();
   </script>
 </body>
 </html>
