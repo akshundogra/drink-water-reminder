@@ -43,6 +43,10 @@
       display: none;
       margin-top: 20px;
     }
+    .meme img {
+      max-width: 300px;
+      border-radius: 20px;
+    }
   </style>
 </head>
 <body>
@@ -50,15 +54,8 @@
     <div class="drop">💧</div>
     <h1>Hey friend! Time to drink some water 💦</h1>
     <button onclick="resetReminder()">I drank water!</button>
-    <div class="meme" id="meme">
-      <div class="tenor-gif-embed" data-postid="17725371557386627543" data-share-method="host" data-aspect-ratio="0.843373" data-width="100%">
-        <a href="https://tenor.com/view/happy-happy-happy-happy-happy-cat-happy-dancing-cat-gif-17725371557386627543">Happy Happy Happy Happy GIF</a> from 
-        <a href="https://tenor.com/search/happy-gifs">Happy GIFs</a>
-      </div>
-    </div>
+    <div class="meme" id="meme"></div>
   </div>
-
-  <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
 
   <script>
     let reminderInterval;
@@ -74,7 +71,11 @@
     function resetReminder() {
       clearInterval(reminderInterval);
       startReminder();
-      document.getElementById("meme").style.display = "block";
+      const memeDiv = document.getElementById("meme");
+      memeDiv.style.display = "block";
+      memeDiv.innerHTML = `
+        <img src="https://akshundogra.github.io/drink-water-reminder/happy-cat.gif" alt="Happy Cat" />
+      `;
     }
 
     startReminder();
