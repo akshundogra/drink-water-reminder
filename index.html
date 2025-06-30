@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>💧 Time to Drink Water!</title>
+  <style>
+    body {
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      background-color: #d0f0ff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .reminder {
+      text-align: center;
+    }
+    .drop {
+      font-size: 100px;
+      animation: bounce 1.5s infinite;
+    }
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-20px); }
+    }
+    button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 18px;
+      border: none;
+      border-radius: 10px;
+      background-color: #00bcd4;
+      color: white;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #0097a7;
+    }
+  </style>
+</head>
+<body>
+  <div class="reminder">
+    <div class="drop">💧</div>
+    <h1>Hey friend! Time to drink some water 💦</h1>
+    <button onclick="resetReminder()">I drank water!</button>
+  </div>
+
+  <script>
+    let reminderInterval;
+
+    function notify() {
+      document.title = "💧 DRINK WATER 💧";
+      if (Notification.permission === "granted") {
+        new Notification("💧 Time to hydrate!");
+      }
+    }
+
+    function startReminder() {
+      reminderInterval = setInterval(notify, 30 * 60 * 1000); // every 30 minutes
+    }
+
+    function resetReminder() {
+      clearInterval(reminderInterval);
+      startReminder();
+      alert("Great job! Come back in 30 mins 💙");
+    }
+
+    if (Notification.permission !== "granted") {
+      Notification.requestPermission().then(startReminder);
+    } else {
+      startReminder();
+    }
+  </script>
+</body>
+</html>
